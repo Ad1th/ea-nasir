@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { REVIEWS_DATA } from '../data/reviews';
-import { Star, Filter, ShieldCheck, FileText } from 'lucide-react';
 
 interface ReviewsSectionProps {
   onOpenRecordModal: () => void;
@@ -23,117 +22,79 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({ onOpenRecordModa
   };
 
   return (
-    <section className="py-16 lg:py-24 bg-[#140c07] border-b border-[#3a2618] relative">
+    <section className="py-20 lg:py-28 bg-[#120c08] border-b border-[#2d1e13]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#22160d] border border-[#422d1f] rounded-full text-xs font-serif text-[#d4af37] uppercase tracking-widest">
-            <Star className="w-3.5 h-3.5 fill-[#d4af37]" />
-            UNMATCHED CUSTOMER REPUTATION
+        {/* Editorial Section Header */}
+        <div className="text-left border-b border-[#2d1e13] pb-6 mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <span className="text-xs font-serif text-[#a87139] tracking-widest uppercase block mb-1">
+              TESTIMONIALS • REPUTATIONAL ARCHIVE
+            </span>
+            <h2 className="text-4xl sm:text-6xl font-serif font-black tracking-tight text-[#f5eee6]">
+              WHAT OUR CUSTOMERS SAY
+            </h2>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-serif font-black tracking-tight text-[#f5eee6]">
-            WHAT OUR CUSTOMERS SAY
-          </h2>
-
-          <p className="text-base text-[#cbb8a1] font-sans">
-            Read testimonials from satisfied merchants, noble traders, and copper buyers across Sumer.
-          </p>
-
-          <div className="h-0.5 w-24 bg-gradient-to-r from-transparent via-[#b87333] to-transparent mx-auto pt-2"></div>
-        </div>
-
-        {/* The Review Filter Bar */}
-        <div className="bg-[#1c120a] border border-[#3a271a] p-4 rounded-lg mb-10 flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto shadow-md">
-          <div className="flex items-center gap-2 text-xs font-serif text-[#cbb8a1]">
-            <Filter className="w-4 h-4 text-[#d97742]" />
-            <span>Showing: <strong className="text-[#f5eee6]">Verified Customer Reviews</strong></span>
-          </div>
-
-          {/* Filter Tabs */}
-          <div className="flex flex-wrap items-center gap-2">
-            {[
-              { id: 'verified', label: 'Verified' },
-              { id: 'all', label: 'All' },
-              { id: 'recent', label: 'Recent' },
-              { id: 'records', label: 'Merchant Records' }
-            ].map((tab) => {
-              const isActive = activeFilter === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => {
-                    if (tab.id === 'records') {
-                      setActiveFilter('records');
-                      onOpenRecordModal();
-                    } else {
-                      setActiveFilter(tab.id as any);
-                    }
-                  }}
-                  className={`px-3.5 py-1.5 text-xs font-serif font-semibold rounded transition-all duration-200 cursor-pointer ${
-                    isActive
-                      ? 'bg-[#b87333] text-[#120c08] shadow'
-                      : 'bg-[#251910] text-[#cbb8a1] hover:text-[#f5eee6] hover:bg-[#322216]'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              );
-            })}
+          {/* Filter Bar */}
+          <div className="flex items-center gap-3">
+            <span className="text-xs font-serif text-[#a89582] uppercase tracking-wider hidden sm:inline">FILTER:</span>
+            <div className="flex items-center space-x-2">
+              {[
+                { id: 'verified', label: 'VERIFIED' },
+                { id: 'all', label: 'ALL' },
+                { id: 'recent', label: 'RECENT' },
+                { id: 'records', label: 'MERCHANT RECORDS' }
+              ].map((tab) => {
+                const isActive = activeFilter === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => {
+                      if (tab.id === 'records') {
+                        setActiveFilter('records');
+                        onOpenRecordModal();
+                      } else {
+                        setActiveFilter(tab.id as any);
+                      }
+                    }}
+                    className={`text-xs font-serif tracking-widest uppercase px-2.5 py-1 transition-colors cursor-pointer ${
+                      isActive
+                        ? 'text-[#f4c28c] font-bold border-b border-[#d97742]'
+                        : 'text-[#a89582] hover:text-[#f5eee6]'
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
 
-        {/* Positive Review Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {/* Printed Testimonials Layout (No floating cards) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-left py-4">
           {filteredReviews().map((review) => (
-            <div
-              key={review.id}
-              className="bg-[#1b120a] border border-[#3d291b] hover:border-[#8c5a2b] p-6 rounded-lg shadow-lg flex flex-col justify-between space-y-4 transition-all duration-300 group"
-            >
-              <div className="space-y-3">
-                {/* 5 Stars */}
-                <div className="flex items-center gap-1 text-[#d4af37]">
-                  {[...Array(review.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#d4af37]" />
-                  ))}
-                </div>
+            <div key={review.id} className="space-y-3 border-b md:border-b-0 md:border-r border-[#2d1e13] pb-8 md:pb-0 md:pr-8 last:border-none">
+              <blockquote className="font-serif text-lg text-[#f5eee6] leading-relaxed italic">
+                "{review.content}"
+              </blockquote>
 
-                <h4 className="font-serif text-base font-bold text-[#f5eee6]">
-                  "{review.title}"
-                </h4>
-
-                <p className="text-xs font-sans text-[#cbb8a1] leading-relaxed italic">
-                  "{review.content}"
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-[#342419] flex items-center justify-between text-xs font-serif">
-                <div>
-                  <span className="text-[#f5eee6] font-bold block">{review.author}</span>
-                  <span className="text-[#a87139] text-[11px]">{review.city} • {review.date}</span>
-                </div>
-                {review.verified && (
-                  <span className="inline-flex items-center gap-1 text-[10px] text-[#4e9e76] bg-[#12241b] border border-[#1e4531] px-2 py-0.5 rounded">
-                    <ShieldCheck className="w-3 h-3" /> VERIFIED
-                  </span>
-                )}
+              <div className="pt-2 text-xs font-serif text-[#a87139]">
+                <strong className="text-[#d97742] uppercase block">{review.author}</strong>
+                <span>{review.city} • {review.date}</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Link to Historical Dispute Record */}
-        <div className="mt-14 pt-8 border-t border-[#2d1e13] text-center">
-          <p className="text-xs font-serif text-[#a89582] mb-3">
-            Looking for a specific historical correspondence?
-          </p>
+        <div className="mt-16 pt-8 border-t border-[#2d1e13] text-center">
           <button
             onClick={onOpenRecordModal}
-            className="inline-flex items-center gap-2 text-xs font-serif font-bold text-[#d97742] hover:text-[#f4c28c] underline underline-offset-4 transition-colors cursor-pointer"
+            className="text-xs font-serif font-bold tracking-widest uppercase text-[#a87139] hover:text-[#d97742] transition-colors border-b border-[#523723] pb-0.5 cursor-pointer"
           >
-            <FileText className="w-4 h-4" />
-            <span>View Merchant Records →</span>
+            LOOKING FOR A SPECIFIC HISTORICAL CORRESPONDENCE? VIEW MERCHANT RECORDS →
           </button>
         </div>
 
