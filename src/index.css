@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Cinzel', serif;
+    --font-decorative: 'Cinzel Decorative', serif;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #120c08;
+    color: #e8dcc4;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    letter-spacing: 0.03em;
+  }
+}
+
+.font-serif {
+  font-family: 'Cinzel', serif;
+}
+
+.font-decorative {
+  font-family: 'Cinzel Decorative', serif;
+}
+
+.font-ancient {
+  font-family: 'IM Fell English SC', serif;
+}
+
+.bg-clay-pattern {
+  background-color: #18100a;
+  background-image: radial-gradient(#2d1e12 1.5px, transparent 1.5px), radial-gradient(#24170d 1.5px, #18100a 1.5px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+.bg-parchment {
+  background-color: #ebdcb9;
+  background-image: radial-gradient(#d3c099 1px, transparent 0);
+  background-size: 16px 16px;
+}
+
+.bg-copper-radial {
+  background: radial-gradient(circle at 50% 10%, rgba(184, 115, 51, 0.18) 0%, rgba(18, 12, 8, 0) 70%);
+}
+
+.copper-gradient-text {
+  background: linear-gradient(135deg, #fce0c2 0%, #e08b53 35%, #b87333 70%, #d4955c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #fff3cf 0%, #d4af37 50%, #aa851c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.clay-tablet-shadow {
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.85), inset 0 1px 2px rgba(255, 255, 255, 0.1), 0 0 20px rgba(184, 115, 51, 0.15);
+}
+
+.bronze-glow {
+  box-shadow: 0 0 25px rgba(184, 115, 51, 0.25);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #120c08;
+}
+::-webkit-scrollbar-thumb {
+  background: #3e2819;
+  border-radius: 4px;
+  border: 1px solid #5a3c27;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b87333;
+}
