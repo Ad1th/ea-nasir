@@ -12,11 +12,12 @@
     background-color: #120c08;
     color: #e8dcc4;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
-    letter-spacing: 0.03em;
+    letter-spacing: 0.02em;
   }
 }
 
@@ -32,54 +33,52 @@
   font-family: 'IM Fell English SC', serif;
 }
 
-.bg-clay-pattern {
-  background-color: #18100a;
-  background-image: radial-gradient(#2d1e12 1.5px, transparent 1.5px), radial-gradient(#24170d 1.5px, #18100a 1.5px);
-  background-size: 30px 30px;
-  background-position: 0 0, 15px 15px;
+/* Texture & Editorial Backgrounds */
+.bg-parchment-texture {
+  background-color: #140d08;
+  background-image: 
+    radial-gradient(ellipse at 50% 0%, rgba(184, 115, 51, 0.08) 0%, transparent 75%),
+    radial-gradient(circle at 10% 90%, rgba(140, 90, 43, 0.04) 0%, transparent 50%);
 }
 
-.bg-parchment {
-  background-color: #ebdcb9;
-  background-image: radial-gradient(#d3c099 1px, transparent 0);
-  background-size: 16px 16px;
+.bg-clay-subtle {
+  background-color: #160e09;
 }
 
-.bg-copper-radial {
-  background: radial-gradient(circle at 50% 10%, rgba(184, 115, 51, 0.18) 0%, rgba(18, 12, 8, 0) 70%);
+.bg-parchment-sheet {
+  background-color: #ecdcb8;
+  color: #2b1a0d;
 }
 
-.copper-gradient-text {
-  background: linear-gradient(135deg, #fce0c2 0%, #e08b53 35%, #b87333 70%, #d4955c 100%);
+/* Editorial Linework & Dividers */
+.border-copper-thin {
+  border-color: rgba(184, 115, 51, 0.25);
+}
+
+.border-bronze-rule {
+  border-color: rgba(140, 90, 43, 0.3);
+}
+
+.copper-text-gradient {
+  background: linear-gradient(135deg, #f7d5b5 0%, #d97742 45%, #b87333 80%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.gold-gradient-text {
-  background: linear-gradient(135deg, #fff3cf 0%, #d4af37 50%, #aa851c 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.clay-tablet-shadow {
-  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.85), inset 0 1px 2px rgba(255, 255, 255, 0.1), 0 0 20px rgba(184, 115, 51, 0.15);
-}
-
-.bronze-glow {
-  box-shadow: 0 0 25px rgba(184, 115, 51, 0.25);
+.copper-text-muted {
+  color: #c4966e;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
   background: #120c08;
 }
 ::-webkit-scrollbar-thumb {
-  background: #3e2819;
-  border-radius: 4px;
-  border: 1px solid #5a3c27;
+  background: #362418;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #b87333;
